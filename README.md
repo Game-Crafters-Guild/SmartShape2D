@@ -13,12 +13,12 @@ This repository is the package root: `package.json`, `Native/`, and `Editor/` st
 ```json
 {
   "dependencies": {
-    "smartshape2d": "git+https://github.com/larssteenhoff/SmartShape2D.git#<commit>"
+    "smartshape2d": "git+https://github.com/Game-Crafters-Guild/SmartShape2D.git#<commit>"
   }
 }
 ```
 
-Use an actual published commit in place of `<commit>`. The intended organization repository is [Game-Crafters-Guild/SmartShape2D](https://github.com/Game-Crafters-Guild/SmartShape2D); engine prerequisites are tracked in [OpenEngine #50](https://github.com/Game-Crafters-Guild/OpenEngine/pull/50). Current stock main is not yet a supported build of this package.
+Use an actual published commit in place of `<commit>`. The package repository is [Game-Crafters-Guild/SmartShape2D](https://github.com/Game-Crafters-Guild/SmartShape2D); engine prerequisites are tracked in [OpenEngine #50](https://github.com/Game-Crafters-Guild/OpenEngine/pull/50). Current stock main is not yet a supported build of this package.
 
 For local development, use `file:/absolute/path/to/SmartShape2D` as the dependency. Create shapes with **Create > Shape > Smart Shape** or **Smart Path**. Authoring uses the editor's standard Undo and Redo commands.
 
