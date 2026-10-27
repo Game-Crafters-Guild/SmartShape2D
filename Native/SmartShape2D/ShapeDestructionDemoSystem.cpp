@@ -50,7 +50,6 @@ void ShowExplosion(ECS::World& world, Mathematics::Vector3 position,
     Components::SplineComponent reference;
     reference.SplineDataIndex = handle.Index();
     reference.SplineDataGeneration = handle.Generation();
-    reference.ShowWidthEnvelope = false;
     Components::SmartShape shape;
     shape.FillMaterial = demo.FlashMaterial;
     shape.EdgesEnabled = false;
