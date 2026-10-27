@@ -82,7 +82,6 @@ void CreateSmartShapeCommand::Do()
     reference.SplineDataIndex = handle.Index();
     reference.SplineDataGeneration = handle.Generation();
     reference.DefaultRadius = 1.0f;
-    reference.ShowWidthEnvelope = false;
     world->AddComponentImmediate(m_Entity, Components::Transform{});
     world->AddComponentImmediate(m_Entity, name);
     world->AddComponentImmediate(m_Entity, reference);

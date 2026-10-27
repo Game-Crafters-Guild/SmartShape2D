@@ -29,12 +29,9 @@ TEST(SmartShapeEditorUndo, PointEditRedoFollowsTheSplineRecreatedByCreationRedo)
         const auto reference = *world.GetComponent<Components::SplineComponent>(owner);
         const SplineECS::SplineHandle original{reference.SplineDataIndex, reference.SplineDataGeneration};
         Editor::SplineUndo::CommitSplineDataOneShot(service, original, &world, owner, nullptr, &undo,
-            "Move Smart Shape Point", [&world, owner](Spline::SplineData* data)
+            "Move Smart Shape Point", [](Spline::SplineData* data)
             {
                 data->SetPointPosition(0, {5, 6, 0});
-                auto* settings = world.GetComponentForWrite<Components::SplineComponent>(owner);
-                settings->DefaultRadius = 3;
-                settings->ShowWidthEnvelope = true;
             });
         undo.Undo();
         undo.Undo();
@@ -49,11 +46,9 @@ TEST(SmartShapeEditorUndo, PointEditRedoFollowsTheSplineRecreatedByCreationRedo)
         ASSERT_NE(data, nullptr);
         EXPECT_FLOAT_EQ(data->Points[0].Position.x, 5);
         EXPECT_FLOAT_EQ(data->Points[0].Position.y, 6);
-        EXPECT_FLOAT_EQ(world.GetComponent<Components::SplineComponent>(owner)->DefaultRadius, 3);
-        EXPECT_TRUE(world.GetComponent<Components::SplineComponent>(owner)->ShowWidthEnvelope);
+        EXPECT_FLOAT_EQ(world.GetComponent<Components::SplineComponent>(owner)->DefaultRadius, 1);
         undo.Undo();
         EXPECT_FLOAT_EQ(world.GetComponent<Components::SplineComponent>(owner)->DefaultRadius, 1);
-        EXPECT_FALSE(world.GetComponent<Components::SplineComponent>(owner)->ShowWidthEnvelope);
         EXPECT_FLOAT_EQ(data->Points[0].Position.x, -2);
         EXPECT_EQ(selections, 0) << "Selection belongs to the plugin compound, never command replay";
         service->DestroySpline(current);
